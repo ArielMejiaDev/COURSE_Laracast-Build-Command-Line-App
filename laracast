@@ -2,6 +2,7 @@
 
 <?php
 
+use Src\Greetings;
 use Symfony\Component\Console\Application;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
@@ -11,9 +12,11 @@ require_once 'vendor/autoload.php';
 
 $app = new Application('Laracast Demo', '1.0');
 
-$app->register('greetings')->setDescription('Offer a greeting to the given person')->addArgument('name', InputArgument::OPTIONAL, 'Add your name')->setCode(function(InputInterface $input, OutputInterface $output) {
-    $message = sprintf("<info>Hello %s World</info>", $input->getArgument('name'));    
-    $output->writeln($message);
-});
+// $app->register('greetings')->setDescription('Offer a greeting to the given person')->addArgument('name', InputArgument::OPTIONAL, 'Add your name')->setCode(function(InputInterface $input, OutputInterface $output) {
+//     $message = sprintf("<info>Hello %s World</info>", $input->getArgument('name'));    
+//     $output->writeln($message);
+// });
+
+$app->add(new Greetings);
 
 $app->run();
